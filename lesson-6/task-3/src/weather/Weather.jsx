@@ -2,36 +2,49 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getWeatherData } from './weather.actions';
 
+import PropTypes from 'prop-types';
+
 class Weather extends Component {
   componentDidMount() {
-    this.props.getWeatherData();
+    this.props.getWeatherData()
   }
 
   render() {
-    const { cities } = this.props;
+    console.log(this.props)
+
+    const { weatherData } = this.props;
 
     return (
-      <main className="weather">
+      <div>
         <h1 className="weather__title">Weather data</h1>
         <ul className="cities-list">
-          {cities.map((city) => (
-            <li key={city.id} className="city">
-              <span className="city__name">{city.name}</span>
-              <span className="city__temperature">{city.temperature} F</span>
-            </li>
-          ))}
+          {
+            weatherData.map(item => (
+              <li key={item.id} className='city'>
+                <span className="city__name">{item.name}</span>
+                <span className="city__temperature">{item.temperature} F</span>
+              </li>
+            ))
+          }
         </ul>
-      </main>
+      </div>
     );
   }
 }
 
-const mapState = (state) => ({
-  cities: state.weather.cities,
-});
-
-const mapDispatch = {
-  getWeatherData,
+Weather.propTypes = {
+  weatherData: PropTypes.array.isRequired,
+  getWeatherData: PropTypes.func.isRequired,
 };
 
+const mapState = state => ({
+  weatherData: state.weatherData,
+})
+
+const mapDispatch = {
+  getWeatherData
+}
+
 export default connect(mapState, mapDispatch)(Weather);
+
+

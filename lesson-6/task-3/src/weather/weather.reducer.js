@@ -1,19 +1,18 @@
-import { GET_WEATHER_DATA } from "./weather.actions";
+import { WEATHER_DATA_RECEIVED } from "./weather.actions";
 
 const initialState = {
-  cities: [],
-};
+  weatherData: []
+}
 
 const weatherReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_WEATHER_DATA:
+    case WEATHER_DATA_RECEIVED:
       return {
         ...state,
-        cities: action.payload,
-      };
+        weatherData: action.payload.weatherData
+      }
     default:
-      return state;
+      return state
   }
-};
-
+}
 export default weatherReducer;
