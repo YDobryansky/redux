@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import * as userActions from "./users.actions";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import * as userActions from './users.actions';
 
 class SearchField extends Component {
   state = {
-    userName: "",
+    userName: '',
   };
 
-  onChange = (event) => {
+  onChange = event => {
     this.setState({ userName: event.target.value });
   };
 
