@@ -1,4 +1,4 @@
-const serverUrl = 'https://6666ad4da2f8516ff7a45a72.mockapi.io/api/v1/tasks'
+const serverUrl = 'https://66c1e3e6f83fffcb587a863b.mockapi.io/api/v1/tasks'
 
 const checkResponse = response => {
 	if (!response.ok) {
